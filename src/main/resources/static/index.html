@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>
+    LibraryReadersApplication
+</h1>
+<form name="form1"> Input text:<br />
+    <input id="readerid" valie="1"></input> <br />
+    <input id="reader-name" valie=""></input> <br />
+    <input id="reader-cardid" valie="0"></input> <br />
+    <input id="sendButton" type="button" value="Send text" onclick="sendText()"/> </form>
+<textarea id="responce-text" cols="80" rows="10"></textarea> <br />
+<script>
+    function sendText() {
+        var r_id = document.getElementById("readerid").value;
+        var r_name = document.getElementById("reader-name").value;
+        var r_cardid = document.getElementById("reader-cardid").value;
+
+        var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+        xmlhttp.open("POST", "/readers");
+        xmlhttp.setRequestHeader("Content-Type", "application/json");
+        xmlhttp.send(JSON.stringify({id: r_id, name: r_name, cardid: r_cardid}));
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               // var responce = JSON.parse(xmlhttp.responseText);
+                var html = '';
+                html = html + xmlhttp.responseText;
+                document.getElementById("responce-text").innerHTML = html;
+            }
+        };
+    }
+
+</script>
+</body>
+</html>
