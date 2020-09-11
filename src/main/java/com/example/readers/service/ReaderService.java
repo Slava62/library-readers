@@ -8,7 +8,7 @@ import java.util.List;
 public interface ReaderService {
     Reader createReader(Reader reader);
 
-    Reader updateReader(Reader reader) throws ResourceNotFoundException;
+    Reader updateReader(Reader reader, Long id) throws ResourceNotFoundException;
 
     List<Reader> getAllReaders();
 

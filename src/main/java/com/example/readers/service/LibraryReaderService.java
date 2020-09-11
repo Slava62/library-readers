@@ -25,12 +25,12 @@ public class LibraryReaderService implements ReaderService {
     }
 
     @Override
-    public Reader updateReader(Reader reader) throws ResourceNotFoundException {
-        Optional <Reader> readerDb = this.readerRepository.findById(reader.getId());
+    public Reader updateReader(Reader reader, Long id) throws ResourceNotFoundException {
+        Optional <Reader> readerDb = this.readerRepository.findById(id);
 
         if (readerDb.isPresent()) {
             Reader readerUpdate = readerDb.get();
-            readerUpdate.setId(reader.getId());
+            //readerUpdate.setId(reader.getId());
             readerUpdate.setName(reader.getName());
             readerUpdate.setCardid(reader.getCardid());
             readerRepository.save(readerUpdate);
@@ -59,10 +59,10 @@ public class LibraryReaderService implements ReaderService {
 
     @Override
     public void deleteReader(Long readerId) throws ResourceNotFoundException {
-        Optional <Reader> productDb = this.readerRepository.findById(readerId);
+        Optional <Reader> readerDb = this.readerRepository.findById(readerId);
 
-        if (productDb.isPresent()) {
-            this.readerRepository.delete(productDb.get());
+        if (readerDb.isPresent()) {
+            this.readerRepository.delete(readerDb.get());
         } else {
             throw new ResourceNotFoundException("Record not found with id : " + readerId);
         }

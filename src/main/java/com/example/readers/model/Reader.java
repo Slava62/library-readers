@@ -1,9 +1,6 @@
 package com.example.readers.model;
 
 import javax.persistence.*;
-
-
-
 import java.io.Serializable;
 
 @Entity

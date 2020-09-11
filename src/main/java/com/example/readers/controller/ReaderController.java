@@ -36,7 +36,7 @@ public class ReaderController {
     @PutMapping("/readers/{id}")
     public ResponseEntity <Reader> updateReader(@PathVariable Long id, @RequestBody Reader reader) throws ResourceNotFoundException {
         reader.setId(id);
-        return ResponseEntity.ok().body(this.readerService.updateReader(reader));
+        return ResponseEntity.ok().body(this.readerService.updateReader(reader, id));
     }
     //deleteReader
     @DeleteMapping("/readers/{id}")
