@@ -8,10 +8,13 @@
     LibraryReadersApplication
 </h1>
 <form name="form1"> Input text:<br />
+    <label for="readerid">Reader ID</label>
     <input id="readerid" valie="1"></input> <br />
+    <label for="reader-name">Reader name</label>
     <input id="reader-name" valie=""></input> <br />
+    <label for="reader-cardid">Reader card</label>
     <input id="reader-cardid" valie="0"></input> <br />
-    <input id="sendButton" type="button" value="Send text" onclick="sendText()"/> </form>
+    <input id="sendButton" type="button" value="Add reader" onclick="sendText()"/> </form>
 <textarea id="responce-text" cols="80" rows="10"></textarea> <br />
 <script>
     function sendText() {
